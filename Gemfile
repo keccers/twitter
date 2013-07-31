@@ -18,6 +18,9 @@ gem 'shotgun'
 
 gem 'bcrypt-ruby'
 gem 'twitter'
+gem 'oauth'
+gem 'redis'
+gem 'sidekiq'
 
 # Use Sass for styling
 gem 'sass'
@@ -29,4 +32,11 @@ group :test, :development do
   gem 'debugger'
   gem 'faker'
   gem 'rspec'
+end
+
+
+group :test do
+  gem 'rspec'
+  # gem 'cap'
+  gem 'shoulda-matchers'
 end

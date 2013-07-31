@@ -1,6 +1,31 @@
 @import '../bourbon/bourbon';
 @import '../neat/neat';
 
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 #loading {
   display: none;
+}
+
+.content {
+  @include pad();
+  @include shift(2);
+  @include span-columns(8); 
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.view {
+  font-size: small;
+  font-weight: 300;
+  text-transform: uppercase;
 }

@@ -19,7 +19,11 @@ require 'shotgun'
 
 require 'erb'
 require 'bcrypt'
+require 'oauth'
 require 'twitter'
+require 'sidekiq'
+require 'redis'
+require 'sidekiq/extensions/active_record'
 
 # Styling
 require 'sass'
@@ -34,13 +38,6 @@ if development?
   require 'debugger'
 end
 
-# Twitter
-Twitter.configure do |config|
-  config.consumer_key = ENV["TWITTER_CONSUMER_KEY"]
-  config.consumer_secret = ENV["TWITTER_CONSUMER_SECRET"]
-  config.oauth_token = ENV["TWITTER_OAUTH_TOKEN"]
-  config.oauth_token_secret = ENV["TWITTER_OAUTH_TOKEN_SECRET"]  
-end
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -55,3 +52,9 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+# Twitter
+Twitter.configure do |config|
+  config.consumer_key = ENV["TWITTER_KEY"]
+  config.consumer_secret = ENV["TWITTER_SECRET"]  
+end
